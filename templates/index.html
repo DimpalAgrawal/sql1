@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+      {% for thread in threads.items %}
+        <div class="alert alert-primary" role="alert">
+          {{thread.title}}
+        </div>
+      {% endfor %}
+
+
+      {% for page in threads.iter_pages( right_edge=1) %}
+      
+        {% if page %}
+          <a href="{{url_for('thread', page_num=page) }}">{{page}}</a>
+        {% else %}
+          ...
+        {% endif %}
+    
+      {% endfor %}
+    </div>
+     
+  </body>
+</html>
+
+
